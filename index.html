@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Thank-You Desk</title>
+  <title>Happy Teachers Day</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -42,13 +42,13 @@
         <div class="w-8 h-8 rounded bg-[#2D5A4C] text-[#F7F4EA] flex items-center justify-center font-serif font-bold text-lg">
           📖
         </div>
-        <span class="font-semibold text-lg tracking-tight">Happy Teachers Day</span>
+        <span class="font-semibold text-lg tracking-tight">The Thank-You Desk</span>
       </div>
       <span class="text-xs uppercase tracking-widest text-[#2D5A4C]/60">Special Note</span>
     </header>
 
     <!-- Main Hero -->
-    <main class="w-full text-center mb-16">
+    <main class="w-full text-center mb-12">
       <span class="text-xs uppercase tracking-widest text-[#D95338] font-semibold mb-4 block">
         — A Celebration in Three Small Words —
       </span>
@@ -58,13 +58,67 @@
       <p class="text-[#2D5A4C]/70 max-w-xl mx-auto text-base md:text-lg mb-8">
         Today, we pause the bell, put the pencils down, and remember the people who helped our confidence grow roots.
       </p>
-      <a href="#interactive-note" class="inline-flex items-center space-x-2 bg-[#D95338] text-white px-6 py-3 rounded-xl shadow-lg hover:bg-[#D95338]/90 transition">
-        <span>OPEN A SPECIAL NOTE</span>
-        <span>✨</span>
-      </a>
+      
+      <div class="flex flex-col items-center space-y-4 mb-8">
+        <a href="#interactive-note" class="inline-flex items-center space-x-2 bg-[#D95338] text-white px-6 py-3 rounded-xl shadow-lg hover:bg-[#D95338]/90 transition">
+          <span>OPEN A SPECIAL NOTE</span>
+          <span>✨</span>
+        </a>
+        <a href="#lessons-section" class="text-xs font-semibold uppercase tracking-widest text-[#2D5A4C]/60 hover:text-[#2D5A4C]">
+          Follow the thought ↓
+        </a>
+      </div>
+
+      <!-- Illustration Graphic -->
+      <div class="w-full max-w-md mx-auto relative my-8 flex justify-center">
+        <svg viewBox="0 0 400 320" class="w-full h-auto max-w-[360px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Yellow Circle Background -->
+          <circle cx="200" cy="140" r="100" fill="#E9C46A" fill-opacity="0.6"/>
+          
+          <!-- Backing Panel Wall -->
+          <rect x="110" y="60" r="8" width="180" height="180" fill="#F7F4EA" stroke="#2D5A4C" stroke-width="4"/>
+          <line x1="200" y1="60" x2="200" y2="240" stroke="#2D5A4C" stroke-width="4"/>
+
+          <!-- Desk Surface -->
+          <rect x="40" y="195" width="320" height="15" rx="4" fill="#D95338"/>
+          <!-- Legs -->
+          <path d="M70 210 L60 270 M330 210 L340 270 M290 210 L280 270" stroke="#2D5A4C" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- Index Card -->
+          <g transform="rotate(-3 190 145)">
+            <rect x="100" y="110" width="180" height="110" rx="4" fill="white" stroke="#2D5A4C" stroke-width="2"/>
+            <line x1="115" y1="135" x2="265" y2="135" stroke="#D95338" stroke-width="2" stroke-dasharray="4 4"/>
+            <line x1="115" y1="155" x2="265" y2="155" stroke="#2D5A4C" stroke-opacity="0.2" stroke-width="2"/>
+            <line x1="115" y1="175" x2="265" y2="175" stroke="#2D5A4C" stroke-opacity="0.2" stroke-width="2"/>
+          </g>
+
+          <!-- Pencil -->
+          <g transform="rotate(-25 240 180)">
+            <rect x="170" y="175" width="110" height="12" rx="2" fill="#E9C46A" stroke="#2D5A4C" stroke-width="2"/>
+            <path d="M280 175 L298 181 L280 187 Z" fill="#D95338" stroke="#2D5A4C" stroke-width="2"/>
+          </g>
+
+          <!-- Leaf Stem Graphic -->
+          <path d="M210 240 Q190 200 215 160" stroke="#2D5A4C" stroke-width="3" fill="none"/>
+          <path d="M215 160 Q235 175 220 195" fill="#2D5A4C" fill-opacity="0.15" stroke="#2D5A4C" stroke-width="2"/>
+          <path d="M205 200 Q180 215 200 230" fill="#2D5A4C" fill-opacity="0.15" stroke="#2D5A4C" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="text-left max-w-xl mx-auto border-t border-[#2D5A4C]/10 pt-8 mt-4">
+        <span class="text-xs uppercase tracking-widest text-[#D95338] font-semibold block mb-2">
+          01 / THE DAILY GIFT
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#2D5A4C] leading-snug">
+          A note for the ones who keep showing up.
+        </h2>
+        <p class="text-[#2D5A4C]/70 mt-3 text-base">
+          No assembly, speech, or apple can quite hold it. So here is a little pocket of words — different every time, meant especially for the teachers who shaped us.
+        </p>
+      </div>
     </main>
 
-    <!-- Interactive Card -->
+   <!-- Interactive Card -->
     <section id="interactive-note" class="w-full mb-24">
       <div class="relative bg-white border border-[#2D5A4C]/10 rounded-2xl p-8 md:p-12 shadow-xl min-h-[280px] flex flex-col justify-between">
         <div class="flex justify-between items-center text-xs tracking-widest text-[#2D5A4C]/40 uppercase mb-6">
@@ -83,13 +137,13 @@
 
         <div class="mt-8 pt-6 border-t border-[#2D5A4C]/5 flex justify-end">
           <button
-            onclick="nextQuote()"
+            type="button"
+            onclick="event.preventDefault(); nextQuote();"
             class="flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold border border-[#2D5A4C]/20 rounded-lg px-4 py-2 hover:bg-[#2D5A4C] hover:text-[#F7F4EA] transition"
           >
             <span>🔄 Another Note</span>
           </button>
         </div>
-        
         <div class="flex justify-between items-center text-xs tracking-widest text-[#2D5A4C]/40 uppercase mb-6">
           <span>Teacher's Day · 2026</span>
           <span id="note-number">NOTE NO. 02</span>
@@ -97,7 +151,7 @@
 
         <div>
           <blockquote id="quote-text" class="font-serif text-2xl md:text-3xl text-[#2D5A4C] leading-snug mb-6">
-            "Somewhere between your patient explanations and your raised eyebrows, I learned to believe my own ideas could take up space."
+            "You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question."
           </blockquote>
           <p id="quote-author" class="italic text-[#D95338] font-serif">
             With gratitude, from every student
@@ -106,21 +160,20 @@
 
         <div class="mt-8 pt-6 border-t border-[#2D5A4C]/5 flex justify-end">
           <button
-            onclick="nextQuote()"
+            type="button"
+            onclick="event.preventDefault(); nextQuote();"
             class="flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold border border-[#2D5A4C]/20 rounded-lg px-4 py-2 hover:bg-[#2D5A4C] hover:text-[#F7F4EA] transition"
           >
             <span>🔄 Another Note</span>
           </button>
-        </div>
-        
-        <div class="flex justify-between items-center text-xs tracking-widest text-[#2D5A4C]/40 uppercase mb-6">
+        </div><div class="flex justify-between items-center text-xs tracking-widest text-[#2D5A4C]/40 uppercase mb-6">
           <span>Teacher's Day · 2026</span>
           <span id="note-number">NOTE NO. 03</span>
         </div>
 
         <div>
           <blockquote id="quote-text" class="font-serif text-2xl md:text-3xl text-[#2D5A4C] leading-snug mb-6">
-            "You noticed the quiet effort before anyone noticed the results . I carry that kind of attention with me still."
+            "You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question."
           </blockquote>
           <p id="quote-author" class="italic text-[#D95338] font-serif">
             With gratitude, from every student
@@ -129,7 +182,8 @@
 
         <div class="mt-8 pt-6 border-t border-[#2D5A4C]/5 flex justify-end">
           <button
-            onclick="nextQuote()"
+            type="button"
+            onclick="event.preventDefault(); nextQuote();"
             class="flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold border border-[#2D5A4C]/20 rounded-lg px-4 py-2 hover:bg-[#2D5A4C] hover:text-[#F7F4EA] transition"
           >
             <span>🔄 Another Note</span>
@@ -172,7 +226,7 @@
     </section>
 
     <!-- Wall Section -->
-    <section class="w-full mb-16">
+    <section class="w-full mb-20">
       <span class="text-xs uppercase tracking-widest text-[#D95338] font-semibold mb-2 block">
         03 / The Note Wall
       </span>
@@ -199,10 +253,28 @@
       </div>
     </section>
 
+    <!-- Closing Message & Feather Icon -->
+    <section class="w-full text-center py-16 border-t border-[#2D5A4C]/10 mb-8">
+      <div class="w-12 h-12 rounded-full border border-[#D95338] flex items-center justify-center mx-auto mb-8">
+        <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-[#D95338]" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13.5V21h7.5z"></path>
+          <line x1="16" y1="8" x2="2" y2="22"></line>
+          <line x1="17.5" y1="15" x2="9" y2="15"></line>
+        </svg>
+      </div>
+
+      <h2 class="font-serif text-3xl md:text-5xl text-[#2D5A4C] leading-tight mb-4 max-w-xl mx-auto">
+        The world is better because <span class="italic text-[#D95338]">you taught in it.</span>
+      </h2>
+      <p class="text-[#2D5A4C]/70 max-w-md mx-auto text-base">
+        To the teachers who gave their time, their patience, and their belief — happy Teacher’s Day. May you feel how far your kindness travels.
+      </p>
+    </section>
+
     <!-- Footer -->
-    <footer class="text-center border-t border-[#2D5A4C]/10 pt-12 w-full text-xs text-[#2D5A4C]/50 space-y-2">
-      <p>An Open Note From Every Student.</p>
-      <p>Made with ❤️ for teachers everywhere</p>
+    <footer class="text-center border-t border-[#2D5A4C]/10 pt-8 w-full text-xs text-[#2D5A4C]/50 space-y-2">
+      <p> AN OPEN NOTE FROM ALL STUDENTS</p>
+      <p>MADE WITH ❤️ FOR TEACHERS EVERYWHERE</p>
       <p>Built By Souvik Nandi</p>
     </footer>
 
@@ -265,6 +337,58 @@
       grid.prepend(newCard);
       document.getElementById('note-form').reset();
     }
+
+     <!-- Section: Lessons that travel with us -->
+    <section id="lessons-section" class="w-full max-w-xl mx-auto py-12 border-t border-[#2D5A4C]/10 mb-12">
+      <span class="text-xs uppercase tracking-widest text-[#D95338] font-semibold block mb-2">
+        04 / WHAT STAYS
+      </span>
+      <h2 class="font-serif text-3xl md:text-5xl text-[#2D5A4C] mb-4">
+        Lessons that travel with us.
+      </h2>
+      <p class="text-[#2D5A4C]/70 text-base md:text-lg mb-10">
+        A good teacher's work is quietly cumulative. It lives in the hand that goes up, the draft that gets finished, and the brave idea shared out loud.
+      </p>
+
+      <div class="space-y-8 border-t border-[#2D5A4C]/10 pt-8">
+        <!-- Item 01 -->
+        <div class="grid grid-cols-[40px_1fr] gap-4">
+          <span class="text-xs font-semibold text-[#D95338] tracking-widest pt-1">01</span>
+          <div>
+            <h3 class="font-serif text-2xl text-[#2D5A4C] mb-2">Make curiosity ordinary.</h3>
+            <p class="text-[#2D5A4C]/70 leading-relaxed">
+              You treated questions as invitations, never interruptions. That changed the shape of the room.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-[#2D5A4C]/10"></div>
+
+        <!-- Item 02 -->
+         <div class="grid grid-cols-[40px_1fr] gap-4">
+          <span class="text-xs font-semibold text-[#D95338] tracking-widest pt-1">02</span>
+          <div>
+            <h3 class="font-serif text-2xl text-[#2D5A4C] mb-2">Let the work be unfinished.</h3>
+            <p class="text-[#2D5A4C]/70 leading-relaxed">
+              You gave us permission to try, revise, and try again — the real rhythm behind every good thing.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-[#2D5A4C]/10"></div>
+
+        <!-- Item 03 -->
+        <div class="grid grid-cols-[40px_1fr] gap-4">
+          <span class="text-xs font-semibold text-[#D95338] tracking-widest pt-1">03</span>
+          <div>
+            <h3 class="font-serif text-2xl text-[#2D5A4C] mb-2">Pass the light on.</h3>
+            <p class="text-[#2D5A4C]/70 leading-relaxed">
+              One day, we will be the person who notices the quiet effort. We will know what to do because you showed us.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </script>
 </body>
 </html>
