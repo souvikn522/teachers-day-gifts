@@ -1,243 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher's Day Celebration</title>
-    <!-- Google Fonts for Editorial Aesthetics -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Teachers Day</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F7F4EA',
+            forest: '#2D5A4C',
+            terracotta: '#D95338',
+            mustard: '#E9C46A',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-[#F7F4EA] text-[#2D5A4C] font-sans antialiased">
 
-    <!-- Header Navigation -->
-    <header class="navbar">
-        <div class="logo">
-            <span class="icon">📖</span>
-            <span class="logo-text">From All Students</span>
-        </div>
-        <span class="tagline">SPECIAL NOTE</span>
-    </header>
+  <div id="root"></div>
 
-    <main>
-        <!-- Section 00: Hero -->
-        <section class="hero-section">
-            <div class="subtitle-badge">A CELEBRATION IN THREE SMALL WORDS</div>
-            <h1 class="main-title">
-                For every teacher who made room for a <span class="highlight-italic">question.</span>
+  <script type="text/babel">
+    const { useState } = React;
+    const { motion, AnimatePresence } = window.FramerMotion;
+
+    const initialQuotes = [
+      {
+        quote: "You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.",
+        author: "With gratitude, from every student",
+        noteNo: "01"
+      },
+      {
+        quote: "You made the back row feel like it belonged in the main conversation.",
+        author: "Class 3B, many years later",
+        noteNo: "02"
+      },
+      {
+        quote: "Thank you for asking 'what do you think?' and actually waiting for the real answer.",
+        author: "Someone still thinking",
+        noteNo: "03"
+      },
+      {
+        quote: "For making mistakes feel like pencil marks, not permanent ink.",
+        author: "A former perfectionist",
+        noteNo: "04"
+      }
+    ];
+
+    function App() {
+      const [quoteIndex, setQuoteIndex] = useState(0);
+      const [wallNotes, setWallNotes] = useState([
+        { text: "For making mistakes feel like pencil marks, not permanent ink.", author: "A FORMER PERFECTIONIST", bg: "bg-white text-forest" },
+        { text: "You made the back row feel like it belonged in the conversation.", author: "CLASS 3B, MANY YEARS LATER", bg: "bg-mustard text-forest" },
+        { text: "Thank you for asking 'what do you think?' and waiting for the real answer.", author: "SOMEONE STILL THINKING", bg: "bg-forest text-paper" },
+        { text: "A teacher's patience becomes a student's inner voice.", author: "WITH A FULL HEART", bg: "bg-terracotta text-white" }
+      ]);
+
+      const [nameInput, setNameInput] = useState("");
+      const [messageInput, setMessageInput] = useState("");
+
+      const handleNextQuote = () => {
+        setQuoteIndex((prev) => (prev + 1) % initialQuotes.length);
+      };
+
+      const handleAddNote = (e) => {
+        e.preventDefault();
+        if (!messageInput.trim()) return;
+
+        const colors = [
+          "bg-white text-forest",
+          "bg-mustard text-forest",
+          "bg-forest text-paper",
+          "bg-terracotta text-white"
+        ];
+        const randomBg = colors[Math.floor(Math.random() * colors.length)];
+
+        setWallNotes([
+          {
+            text: messageInput,
+            author: nameInput.trim() ? nameInput.toUpperCase() : "ANONYMOUS STUDENT",
+            bg: randomBg
+          },
+          ...wallNotes
+        ]);
+
+        setMessageInput("");
+        setNameInput("");
+      };
+
+      return (
+        <div class="min-h-screen flex flex-col items-center px-4 py-8 md:py-16 max-w-3xl mx-auto">
+          
+          <header class="w-full flex justify-between items-center border-b border-forest/10 pb-6 mb-12">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded bg-forest text-paper flex items-center justify-center font-serif font-bold text-lg">
+                📖
+              </div>
+              <span class="font-semibold text-lg tracking-tight">The Thank-You Desk</span>
+            </div>
+            <span class="text-xs uppercase tracking-widest text-forest/60">Special Note</span>
+          </header>
+
+          <main class="w-full text-center mb-16">
+            <span class="text-xs uppercase tracking-widest text-terracotta font-semibold mb-4 block">
+              — A Celebration in Three Small Words —
+            </span>
+            <h1 class="font-serif text-4xl md:text-6xl font-normal leading-tight mb-6">
+              For every teacher who made room for a <span class="italic text-terracotta">question.</span>
             </h1>
-            <p class="hero-description">
-                Today, we pause the bell, put the pencils down, and remember the people who helped our confidence grow roots.
+            <p class="text-forest/70 max-w-xl mx-auto text-base md:text-lg mb-8">
+              Today, we pause the bell, put the pencils down, and remember the people who helped our confidence grow roots.
             </p>
-            <div class="hero-actions">
-                <a href="#section-note" class="btn-primary">
-                    OPEN A SPECIAL NOTE <span>✨</span>
-                </a>
-                <a href="#section-daily" class="scroll-link">FOLLOW THE THOUGHT <span>↓</span></a>
-            </div>
-        </section>
+            <a href="#interactive-note" class="inline-flex items-center space-x-2 bg-terracotta text-white px-6 py-3 rounded-xl shadow-lg hover:bg-terracotta/90 transition">
+              <span>OPEN A SPECIAL NOTE</span>
+              <span>✨</span>
+            </a>
+          </main>
 
-        <!-- Illustration Graphic -->
-        <div class="desk-illustration-container">
-            <div class="sun-backdrop"></div>
-            <div class="desk-frame">
-                <div class="index-card">
-                    <div class="card-line"></div>
-                    <div class="card-line"></div>
-                    <div class="pencil"></div>
-                </div>
-            </div>
-            <p class="caption-mono">THE ROOM IS READY.<br>THE GOOD KIND OF NERVOUS.</p>
-        </div>
+          <section id="interactive-note" class="w-full mb-24">
+            <div class="relative bg-white border border-forest/10 rounded-2xl p-8 md:p-12 shadow-xl overflow-hidden min-h-[280px] flex flex-col justify-between">
+              <div class="flex justify-between items-center text-xs tracking-widest text-forest/40 uppercase mb-6">
+                <span>Teacher's Day · 2026</span>
+                <span>Note No. {initialQuotes[quoteIndex].noteNo}</span>
+              </div>
 
-        <!-- Section 01: The Daily Gift -->
-        <section id="section-daily" class="content-section">
-            <span class="section-number">01 / THE DAILY GIFT</span>
-            <h2 class="section-title">A note for the ones who keep showing up.</h2>
-            <p class="section-text">
-                No assembly, speech, or apple can quite hold it. So here is a little pocket of words — different every time, meant especially for the teachers who shaped us.
-            </p>
-            <p class="italic-link">Turn the page →</p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={quoteIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <blockquote class="font-serif text-2xl md:text-3xl text-forest leading-snug mb-6">
+                    "{initialQuotes[quoteIndex].quote}"
+                  </blockquote>
+                  <p class="italic text-terracotta font-serif">
+                    {initialQuotes[quoteIndex].author}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
 
-            <!-- Interactive Random Quote Card -->
-            <div id="section-note" class="interactive-quote-card">
-                <div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
+              <div class="mt-8 pt-6 border-t border-forest/5 flex justify-end">
+                <button
+                  onClick={handleNextQuote}
+                  class="flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold border border-forest/20 rounded-lg px-4 py-2 hover:bg-forest hover:text-paper transition"
+                >
+                  <span>🔄 Another Note</span>
                 </button>
-                <div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
-                </button><div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
-                </button><div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
-                </button><div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
-                </button><div class="card-header">
-                    <span>TEACHER'S DAY · 2026</span>
-                    <span id="note-id">NOTE NO. 01</span>
-                </div>
-                <blockquote id="quote-text">
-                    “You taught me that not knowing the answer is not a dead end. It is the first, brave step toward finding a better question.”
-                </blockquote>
-                <p class="quote-signature">With gratitude, from every student</p>
-                <button id="next-quote-btn" class="btn-secondary">
-                    🔄 ANOTHER NOTE
-                </button>
+              </div>
             </div>
-        </section>
+          </section>
 
-        <!-- Section 02: Interactive Input -->
-        <section class="content-section dark-green-bg">
-            <span class="section-number yellow-text">02 / YOUR TURN</span>
-            <h2 class="section-title white-text">Put one true thing on the desk.</h2>
-            <p class="section-text light-green-text">
-                Think of the teacher who remembered your name, made room after class, or helped you see around the corner. Leave them a note below.
+          <section class="w-full bg-forest text-paper rounded-3xl p-8 md:p-12 mb-24 shadow-2xl">
+            <span class="text-xs uppercase tracking-widest text-mustard font-semibold mb-2 block">
+              02 / Your Turn
+            </span>
+            <h2 class="font-serif text-3xl md:text-5xl mb-4">Put one true thing on the desk.</h2>
+            <p class="text-paper/70 mb-8 max-w-md">
+              Think of the teacher who remembered your name, made room after class, or helped you see around the corner. Leave them a note below.
             </p>
 
-            <form id="note-form" class="note-form">
-                <input type="text" id="author-input" placeholder="Your name (optional)" autocomplete="off">
-                <textarea id="message-input" rows="4" placeholder="I remember when..." required></textarea>
-                <button type="submit" class="btn-primary orange-btn">
-                    ✈ PIN NOTE
-                </button>
+            <form onSubmit={handleAddNote} class="space-y-4">
+              <input
+                type="text"
+                placeholder="Your name (optional)"
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
+                class="w-full bg-paper/10 border border-paper/20 rounded-xl px-4 py-3 text-paper placeholder-paper/40 focus:outline-none focus:border-mustard"
+              />
+              <textarea
+                rows="3"
+                placeholder="I remember when..."
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+                class="w-full bg-paper/10 border border-paper/20 rounded-xl px-4 py-3 text-paper placeholder-paper/40 focus:outline-none focus:border-mustard"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                class="bg-terracotta text-white font-semibold text-xs tracking-widest uppercase px-6 py-4 rounded-xl hover:bg-terracotta/90 transition shadow-md"
+              >
+                📌 Pin Note
+              </button>
             </form>
-        </section>
+          </section>
 
-        <!-- Section 03: The Note Wall -->
-        <section class="content-section">
-            <span class="section-number">03 / THE NOTE WALL</span>
-            <h2 class="section-title">The small things become the big things.</h2>
-            <p class="section-text">
-                A handful of anonymous thank-yous, collected from the desks and doorways of memory.
-            </p>
+          <section class="w-full mb-16">
+            <span class="text-xs uppercase tracking-widest text-terracotta font-semibold mb-2 block">
+              03 / The Note Wall
+            </span>
+            <h2 class="font-serif text-3xl md:text-4xl mb-2">The small things become the big things.</h2>
+            <p class="text-forest/60 mb-8">A handful of anonymous thank-yous, collected from the desks and doorways of memory.</p>
 
-            <div id="notes-grid" class="notes-grid">
-                <!-- Pre-populated cards -->
-                <div class="sticky-card card-white">
-                    <span class="card-icon">✏️</span>
-                    <p class="card-body">"For making mistakes feel like pencil marks, not permanent ink."</p>
-                    <span class="card-author"> Student</span>
-                </div>
-
-                <div class="sticky-card card-yellow">
-                    <span class="card-icon">👥</span>
-                    <p class="card-body">"You made the back row feel like it belonged in the conversation."</p>
-                    <span class="card-author">Student</span>
-                </div>
-
-                <div class="sticky-card card-green">
-                    <span class="card-icon">💡</span>
-                    <p class="card-body">"Thank you for asking 'what do you think?' and waiting for the real answer."</p>
-                    <span class="card-author">— SOMEONE STILL THINKING</span>
-                </div>
-
-                <div class="sticky-card card-orange">
-                    <span class="card-icon">❤️</span>
-                    <p class="card-body">"A teacher's patience becomes a student's inner voice. Mine still sounds like yours."</p>
-                    <span class="card-author">— WITH A FULL HEART</span>
-                </div>
-
-                <div class="sticky-card card-white">
-                    <span class="card-icon">⭐</span>
-                    <p class="card-body">"For every extra minute, second chance, and tiny 'I knew you could' — thank you."</p>
-                    <span class="card-author">— YOUR STUDENT, ALWAYS</span>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {wallNotes.map((note, idx) => (
+                <motion.div
+                  key={idx}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  class={`p-6 rounded-2xl shadow-md flex flex-col justify-between border border-black/5 ${note.bg}`}
+                >
+                  <p class="font-serif text-lg leading-snug mb-6">"{note.text}"</p>
+                  <span class="text-[10px] tracking-widest uppercase opacity-60 font-semibold">— {note.author}</span>
+                </motion.div>
+              ))}
             </div>
-        </section>
+          </section>
 
-        <!-- Section 04: Lessons That Travel -->
-        <section class="content-section">
-            <span class="section-number">04 / WHAT STAYS</span>
-            <h2 class="section-title">Lessons that travel with us.</h2>
-            <p class="section-text">
-                A good teacher’s work is quietly cumulative. It lives in the hand that goes up, the draft that gets finished, and the brave idea shared out loud.
-            </p>
+          <footer class="text-center border-t border-forest/10 pt-12 w-full text-xs text-forest/50 space-y-2">
+            <p>An Open Note By All Students.</p>
+            <p>Made with ❤️ for teachers everywhere</p>
+          </footer>
+        </div>
+      );
+    }
 
-            <div class="lessons-list">
-                <div class="lesson-item">
-                    <span class="lesson-num">01</span>
-                    <div class="lesson-content">
-                        <h3>Make curiosity ordinary.</h3>
-                        <p>You treated questions as invitations, never interruptions. That changed the shape of the room.</p>
-                    </div>
-                </div>
-                <div class="lesson-item">
-                    <span class="lesson-num">02</span>
-                    <div class="lesson-content">
-                        <h3>Let the work be unfinished.</h3>
-                        <p>You gave us permission to try, revise, and try again — the real rhythm behind every good thing.</p>
-                    </div>
-                </div>
-                <div class="lesson-item">
-                    <span class="lesson-num">03</span>
-                    <div class="lesson-content">
-                        <h3>Pass the light on.</h3>
-                        <p>One day, we will be the person who notices the quiet effort. We will know what to do because you showed us.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Message Section -->
-        <section class="final-banner">
-            <div class="feather-circle">🪶</div>
-            <h2 class="final-title">
-                The world is better because you <span class="highlight-italic">taught in it.</span>
-            </h2>
-            <p class="final-text">
-                To the teachers who gave their time, their patience, and their belief — happy Teacher’s Day. May you feel how far your kindness travels.
-            </p>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p> AN OPEN NOTE FROM YOUR STUDENTS. </p>
-        <p>MADE WITH FOR TEACHERS EVERYWHERE</p>
-    </footer>
-
-    <script src="script.js"></script>
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
 </html>
